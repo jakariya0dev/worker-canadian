@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 class BioController extends Controller
 {
 
+    function returnUserBioForm(){
+        $siteData = DB::table('site_data')->get()->first();
+        return view('backend.user.search-bio', ['siteData' =>  $siteData]);
+    }
+
     function addNewBio(Request $request){
 
         $image = time().'.'.$request->file('pro_pic')->getClientOriginalExtension();
@@ -162,12 +167,19 @@ class BioController extends Controller
 
     function findUserBio(Request $request){
 
+        // $request->validate([
+        //     'email' => 'required',
+        //     'password' => 'required',
+        // ]);
+
+        $siteData = DB::table('site_data')->get()->first();
+
         $user = DB::table('user_profile')
         ->where('email', $request['user-email'])
         ->Where('password', $request['user-password'])
         ->first();
         
-        return view('backend.user.user-bio', ['user' => $user]);
+        return view('backend.user.user-bio', ['siteData' =>  $siteData, 'user' => $user]);
     }
     
 }

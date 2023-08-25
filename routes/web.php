@@ -14,7 +14,7 @@ Route::view('/p-policy', 'frontend.about')->name('p.policy');
 
 
 // User Route
-Route::view('/user-bio-form', 'backend.user.search-bio')->name('user.bio.form');
+Route::get('/user-bio-form', [BioController::class, 'returnUserBioForm'])->name('user.bio.form');
 Route::get('/user-bio', [BioController::class, 'findUserBio'])->name('user.bio');
 
 
