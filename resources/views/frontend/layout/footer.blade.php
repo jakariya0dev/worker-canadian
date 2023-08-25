@@ -6,15 +6,15 @@
           <div class="container">
             <div class="row gy-4">
               <div class="col-lg-5 col-md-12 footer-info">
-                <a href="index.html" class="logo d-flex align-items-center">
-                  <span>Canadim</span>
+                <a href="{{ route('home') }}" class="logo d-flex align-items-center">
+                  <span>{{ $siteData->site_name }}</span>
                 </a>
-                <p>Canadim is a Canadian Immigration Law Firm based in Montreal, Quebec, and is widely considered one of the most well-respected immigration law firms in Canada. Our philosophy is simple. Work hard for our clients to achieve the best possible immigration results!</p>
+                <p>{{ $siteData->short_desc }}</p>
                 <div class="social-links d-flex  mt-3">
-                  <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                  <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                  <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                  <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                  <a href="{{ $siteData->twitter }}" class="twitter"><i class="bi bi-twitter"></i></a>
+                  <a href="{{ $siteData->facebook }}" class="facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="{{ $siteData->instagram }}" class="instagram"><i class="bi bi-instagram"></i></a>
+                  <a href="{{ $siteData->linkedin }}" class="linkedin"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
     
@@ -42,11 +42,11 @@
               <div class="col-lg-2 col-md-12 footer-contact text-center text-md-start">
                 <h4>Contact Us</h4>
                 <p>
-                  A108 Adam Street <br>
-                  New York, NY 535022<br>
-                  United States <br><br>
-                  <strong>Phone:</strong> +1 5589 55488 55<br>
-                  <strong>Email:</strong> info@example.com<br>
+                  {{-- A108 Adam Street <br>
+                  New York, NY 535022<br> --}}
+                  {{ $siteData->location }} <br><br>
+                  <strong>Phone:</strong> {{ $siteData->cell_number }}<br>
+                  <strong>Email:</strong> {{ $siteData->email }}<br>
                 </p>
     
               </div>
@@ -58,7 +58,7 @@
         <div class="footer-legal">
           <div class="container">
             <div class="copyright">
-              &copy; Copyright <strong><span>Canadim</span></strong>. All Rights Reserved
+              &copy; Copyright <strong><span>{{ $siteData->site_name }}</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
               Devloped by <a class="text-primary" href="https://Jakariya.dev/">Jakariya.dev</a>

@@ -20,6 +20,9 @@
                   <a class="nav-link" aria-current="page" href="{{ route('bio.all') }}">Home</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="{{ route('site.data') }}">Site Data</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="{{ route('bio.new') }}">Add profile</a>
                 </li>
                 <li class="nav-item">
