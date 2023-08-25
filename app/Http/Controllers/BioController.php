@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class BioController extends Controller
 {
@@ -16,8 +17,17 @@ class BioController extends Controller
 
     function addNewBio(Request $request){
 
-        $image = time().'.'.$request->file('pro_pic')->getClientOriginalExtension();
-        $request->file('pro_pic')->storeAs('public/images/pro_pic', $image);
+        $image = '';
+
+        $validate = $request->validate([
+            'mobile' => 'required',
+            'email' => 'required'
+        ]);
+
+        if($request->hasFile('pro_pic')){
+            $image = time().'.'.$request->file('pro_pic')->getClientOriginalExtension();
+            $request->file('pro_pic')->storeAs('public/images/pro_pic', $image);
+        }
 
         $arow = DB::table('user_profile')->insert([
             'sure_name' => $request['sure_name'],
@@ -110,6 +120,27 @@ class BioController extends Controller
 
     function updateBio(Request $request){
 
+        $validate = $request->validate([
+            'mobile' => 'required',
+            'email' => 'required'
+        ]);
+
+        $image = $request->old_pro_pic;
+
+        if($request->hasFile('pro_pic')){
+
+            $image = time().'.'.$request->file('pro_pic')->getClientOriginalExtension();
+            $request->file('pro_pic')->storeAs('public/images/pro_pic', $image);
+
+            // deleting old pro pic
+            $imagePath = public_path('storage/images/pro_pic/'.$request->old_pro_pic);
+            if(File::exists($imagePath)){
+                
+                unlink($imagePath);
+            }
+            
+        }
+
         $arow = DB::table('user_profile')->where('id', $request['id'])->update([
             'sure_name' => $request['sure_name'],
             'name' => $request['name'],
@@ -158,7 +189,8 @@ class BioController extends Controller
             'poa' => $request['poa'],
             'poe' => $request['poe'],
             'status' => $request['status'],
-            'password' => Str::random(10),
+            'password' => $request['password'],
+            'pro_pic' => $image
         ]);
 
         return redirect()->route('bio.all');
@@ -167,10 +199,11 @@ class BioController extends Controller
 
     function findUserBio(Request $request){
 
-        // $request->validate([
-        //     'email' => 'required',
-        //     'password' => 'required',
-        // ]);
+        $validate = $request->validate([
+            'user-email' => 'required',
+            'user-password' => 'required',
+        ]);
+
 
         $siteData = DB::table('site_data')->get()->first();
 
@@ -178,8 +211,10 @@ class BioController extends Controller
         ->where('email', $request['user-email'])
         ->Where('password', $request['user-password'])
         ->first();
-        
+
         return view('backend.user.user-bio', ['siteData' =>  $siteData, 'user' => $user]);
+        
+    
     }
     
 }

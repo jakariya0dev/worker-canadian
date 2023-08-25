@@ -22,7 +22,7 @@ Route::get('/user-bio', [BioController::class, 'findUserBio'])->name('user.bio')
 
 Route::middleware('auth')->group(function (){
     // Route::get('/admin-login', [BioController::class, 'getAllBio'])->name('admin.login');
-    Route::view('/new-bio', 'backend.admin.new-form')->name('bio.new');
+    Route::view('/new-bio', 'backend.admin.bio-form')->name('bio.new');
     Route::get('/all-bio', [BioController::class, 'getAllBio'])->name('bio.all');
     Route::get('/view-bio/{id}', [BioController::class, 'getSingleBio'])->name('bio.view');
     Route::post('/add-bio', [BioController::class, 'addNewBio'])->name('bio.add');

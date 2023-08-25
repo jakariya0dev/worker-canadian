@@ -1,6 +1,16 @@
 @extends('backend.admin.admin-master')
 
 @section('content')
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <form action="{{ route('update.site.data') }}">
         <div class="mb-3">
             <label for="site_name" class="form-label">Site Name</label>

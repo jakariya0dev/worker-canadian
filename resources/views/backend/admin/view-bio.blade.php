@@ -5,7 +5,7 @@
             <table class="table table-striped">
                 <tr>
                     <td colspan="5"></td>
-                    <td><img class="img-thumbnail" src="{{ asset('storage/images/pro_pic/'.$user->pro_pic) }}" alt=""></td>
+                    <td><img style="height: 200px; width: 180px;" class="img-thumbnail" src="{{ asset('storage/images/pro_pic/'.$user->pro_pic) }}" alt=""></td>
                 </tr>
                 <tr>
                     <th colspan="6"><h5 class="text-secondary">A. Personal Particulars (As in Passport)</h5></th>

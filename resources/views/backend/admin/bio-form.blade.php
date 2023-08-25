@@ -1,6 +1,17 @@
 @extends('backend.admin.admin-master')
 
 @section('content')
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form class="g-3" method="POST" action="{{ route('bio.add') }}" enctype="multipart/form-data">
             @csrf
             @method('post')

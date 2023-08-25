@@ -1,7 +1,21 @@
 @extends('backend.user.user-master')
 
 @section('content')
-<br><br>
+    <br><br>
+
+    @if ( $user == null)
+        <div class="container">
+            <div class="row">
+                <div class="vh-100 d-flex justify-content-md-center align-items-center">
+                    <div class="col-md-4 text-center">
+                        <h4>No profile Found</h4>
+                        <br>
+                        <a class="btn btn-primary" href="{{ route('user.bio.form') }}">Search Again</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @else
         <div class="container mt-5">
             <div class="row">
                 <div class="table-responsive-md">
@@ -167,5 +181,6 @@
                 </div>
             </div>
         </div>
+    @endif
 
 @endsection

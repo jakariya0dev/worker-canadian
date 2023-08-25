@@ -15,6 +15,21 @@ class SiteDataController extends Controller
     }
 
     function updateSiteData(Request $request){
+
+        $validate = $request->validate([
+            'site_name' => 'required',
+            'site_title' => 'required',
+            'sub_title' => 'required',
+            'cell_number' => 'required',
+            'location' => 'required',
+            'email' => 'required',
+            'short_desc' => 'required',
+            'twitter' => 'required',
+            'instagram' => 'required',
+            'facebook' => 'required',
+            'linkedin' => 'required',
+        ]);
+
         $arow = DB::table('site_data')->where('id', 1)->update([
             'site_name' => $request->site_name,
             'site_title' => $request->site_title,

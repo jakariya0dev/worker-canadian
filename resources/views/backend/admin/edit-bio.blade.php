@@ -1,11 +1,26 @@
 @extends('backend.admin.admin-master')
 
 @section('content')
-        <form class="g-3" method="POST" action="{{ route('bio.update') }}">
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        <form class="g-3" method="POST" action="{{ route('bio.update') }}" enctype="multipart/form-data">
             @csrf
             @method('put')
 
             {{-- A. Personal Particulars (As in Passport --}}
+
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3" ><img style="height: 200px; width: 180px;" class="img-thumbnail" src="{{ asset('storage/images/pro_pic/'.$user->pro_pic) }}" alt=""></div>
+            </div>
 
             <h5 class="mt-5 mb-3">A. Personal Particulars (As in Passport)</h5>
             <hr>
@@ -266,7 +281,15 @@
                 </div>
                 <div class="col-md-6">
                     <label for="password" class="form-label">Password</label>
-                    <input value="{{ $user->password }}" name="status" type="text" class="form-control" id="password">
+                    <input value="{{ $user->password }}" name="password" type="text" class="form-control" id="password">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="old_pro_pic" class="form-label">Profile Pictures</label>
+                    <input value="{{ $user->pro_pic }}" name="old_pro_pic" type="hidden" class="form-control" id="old_pro_pic">
+                    <input name="pro_pic" type="file" class="form-control" id="pro_pic">
                 </div>
             </div>
 
