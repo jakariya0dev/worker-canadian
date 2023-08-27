@@ -17,13 +17,25 @@
         </div>
     @else
         <div class="container mt-5">
+            <div class="row d-flex align-items-center">
+                <div class="col-3">
+                    <img src="{{ asset('frontend/assets/img/canada-gov-logo.svg') }}" alt="Canada Logo" style="height: 250px; width: 300px; margin-left: -60px">
+                </div>
+                <div class="col-9">
+                    <h2 style="margin-left: -80px">High Commission of Canada</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 d-flex justify-content-center align-items-center">
+                    <h5>Visa Application Form</h5>
+                </div>
+                <div class="col-md-2">
+                    <img class="img-thumbnail" src="{{ asset('storage/images/pro_pic/'.$user->pro_pic) }}" alt="Pro Pic" style="height: 200px; width: 180px">
+                </div>
+            </div>
             <div class="row">
                 <div class="table-responsive-md">
                     <table class="table table-striped">
-                        <tr>
-                            <td colspan="5"></td>
-                            <td><img class="img-thumbnail" src="{{ asset('storage/images/pro_pic/'.$user->pro_pic) }}" alt=""></td>
-                        </tr>
                         <tr>
                             <th colspan="6"><h5 class="text-secondary">A. Personal Particulars (As in Passport)</h5></th>
                         </tr>
@@ -170,7 +182,7 @@
                             <th>Port Of Exit:</th>
                             <td colspan="2">{{ $user->poe }}</td>
                         </tr>
-            
+
                         <tr>
                             <th>Status:</th>
                             <td colspan="2">{{ $user->status }}</td>
@@ -182,5 +194,76 @@
             </div>
         </div>
     @endif
+
+    <div class="container border border-2">
+        <div class="m-5">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="col-4">
+                    <h1>Canada</h1>
+                    <h5>
+                        Consulate General of Canada <br>
+                        Consulat général du Canada
+                    </h5>
+                </div>
+                <div class="col-3 justify-content-center">
+                    <img src="{{ asset('frontend/assets/img/logo-canada.jpeg') }}" alt="" style="height: 150px; width: 200px">
+                    <h6>
+                        Embassy of Canada <br>
+                        Ambassade du Canada
+                    </h6>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <p class="text-center text-decoration-underline font-weight-bold fs-4">VISA APPLICATION APPROVAL NOTIFICATION LETTER</p>
+                <p> </p>
+                <p>
+                    Date. 08-08-2023 <br>
+                    Time 10:38 AM <br><br>
+                    Dear Arif
+                </p>
+                <p>
+                    Greetings from the High Commission of Canada .I would like to inform you that you have been found elig
+                    Entry Visa to Canada. type of Visa (W- under section 347 of Canadian Immigration and Nationality Act (CINAL and
+                    Canadian Immigration and Nationality Act (CINAL and Canadian Immigration Law (CIL) As you and your employer
+                    (BRONTE Wolder work CANADA) has satisfind the requirements of the Canadian Imigration law, have
+                    on the section $12, you are found entitled to (W-1) Visa to live and engage your skill with your new Employer in Canada
+                </p>
+                <p>
+                    I am pleased to apprise you that your application for entry Visa to Canada with passport number [BN0771259] has
+                    being considered and approved berr an my office as Consulate of the High Commission of Canada, by the authority
+                    given to me from above Your application has been considered with four years multiple entry Visa to work under
+                    BRONTE Wolder work CANADA A pureel be hamlled over to you on your appointment date: the parcel
+                    will remain scaled till you arrive in Canada, the part contas documents to further with your case file to enable you
+                    applying permanent resident to further with your future career in Canada
+                </p>
+                <p>
+                    Your visa charges are 246 CAD and CIS Charges: 270 CAD pectively. You are to make the payment immediately
+                    for yanar (W-Viss with the total sum of Total 546 CAD (Five Hundred and Forty Sex Canadian Dollars only). Your visa
+                    issuance and appointment date will be scheduled within 24 hours after the confirmation of your visa fee payment. <br>
+                </p>
+                <p>
+                    Your appointed immigration Alorry in charge your file as be send an Authorize Cashier payment details for your visa
+                    fer payment via Money Gram trader
+                </p>
+                <div class="row d-flex justify-content-between mt-5 mb-4">
+                   <div class="col-md-3">
+                        <img src="{{ asset('frontend/assets/img/sign.jpg') }}" style="height: 150px; width: 200px" alt="Signature">
+                   </div>
+                   <div class="col-md-3">
+                        <img src="{{ asset('frontend/assets/img/visa-logo.png') }}" style="height: 100px; width: 150px" alt="Visa Logo">
+                    </div>
+                   <div class="col-md-3">
+                        Sincerely <br>
+                        Michael H Corbin <br>
+                        Consular Officer <br>
+                        Nonimmigrant Visa Section <br>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">{!! DNS1D::getBarcodeHTML('4445645656', 'C39') !!}</div>
+                <p class="text-center text-uppercase font-bold fs-4 my-5">532 WALNUT STREET READING,PA 19601</p>
+            </div>
+        </div>
+    </div>
 
 @endsection
