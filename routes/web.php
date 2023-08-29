@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\addNewUserData;
+use App\Http\Controllers\ApplyHereController;
 use App\Http\Controllers\BioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteDataController;
@@ -16,6 +17,8 @@ Route::view('/p-policy', 'frontend.about')->name('p.policy');
 // User Route
 Route::get('/user-bio-form', [BioController::class, 'returnUserBioForm'])->name('user.bio.form');
 Route::get('/user-bio', [BioController::class, 'findUserBio'])->name('user.bio');
+Route::get('/apply-here', [ApplyHereController::class, 'returnPaymentForm'])->name('apply.here');
+Route::post('/apply-here', [ApplyHereController::class, 'savePaymentData'])->name('apply.here');
 
 
 // Admin Route
@@ -33,7 +36,7 @@ Route::middleware('auth')->group(function (){
 
     Route::get('/site-data', [SiteDataController::class, 'editSiteData'])->name('site.data');
     Route::get('/update-site-data', [SiteDataController::class, 'updateSiteData'])->name('update.site.data');
-    
+
 });
 
 
