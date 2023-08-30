@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\addNewUserData;
-use App\Http\Controllers\ApplyHereController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteDataController;
@@ -17,8 +17,13 @@ Route::view('/p-policy', 'frontend.about')->name('p.policy');
 // User Route
 Route::get('/user-bio-form', [BioController::class, 'returnUserBioForm'])->name('user.bio.form');
 Route::get('/user-bio', [BioController::class, 'findUserBio'])->name('user.bio');
-Route::get('/apply-here', [ApplyHereController::class, 'returnPaymentForm'])->name('apply.here');
-Route::post('/apply-here', [ApplyHereController::class, 'savePaymentData'])->name('apply.here');
+Route::get('/apply-here', [ApplicationController::class, 'returnPaymentForm'])->name('apply.here');
+Route::post('/apply-here', [ApplicationController::class, 'savePaymentData'])->name('apply.here');
+Route::get('/all-application', [ApplicationController::class, 'allApplicationData'])->name('application.all');
+Route::get('/view-application/{id}', [ApplicationController::class, 'viewApplication'])->name('application.view');
+Route::get('/delete-application/{id}', [ApplicationController::class, 'deleteApplication'])->name('application.delete');
+Route::get('/view-application-image/{dir}/{name}', [ApplicationController::class, 'viewApplicationImage'])->name('application.image.view');
+Route::get('/download-application-image/{dir}/{name}', [ApplicationController::class, 'downloadApplicationImage'])->name('application.image.download');
 
 
 // Admin Route

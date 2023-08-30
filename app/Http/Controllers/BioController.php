@@ -60,7 +60,7 @@ class BioController extends Controller
             'email' => $request['email'],
             'pre_address' => $request['pre_address'],
             'per_address' => $request['per_address'],
-            
+
             'f_name' => $request['f_name'],
             'f_nation' => $request['f_nation'],
             'f_cob' => $request['f_cob'],
@@ -95,13 +95,22 @@ class BioController extends Controller
     function getSingleBio($id){
         $user = DB::table('user_profile')->find($id);
         return view('backend.admin.view-bio', ['user' => $user]);
-    
+
     }
 
     function deleteBio($id){
+
+        // deleting pro pic
+        $pro_pic = DB::table('user_profile')->where('id', $id)->value('pro_pic');
+        $imagePath = storage_path('app/public/images/pro_pic/'.$pro_pic);
+
+        if ($pro_pic != null && File::exists($imagePath)){
+            unlink($imagePath);
+        }
+
         $status = DB::table('user_profile')->where('id', $id)->delete();
         return redirect()->route('bio.all');
-        
+
     }
 
     function editBio($id){
@@ -135,10 +144,10 @@ class BioController extends Controller
             // deleting old pro pic
             $imagePath = public_path('storage/images/pro_pic/'.$request->old_pro_pic);
             if(File::exists($imagePath)){
-                
+
                 unlink($imagePath);
             }
-            
+
         }
 
         $arow = DB::table('user_profile')->where('id', $request['id'])->update([
@@ -172,7 +181,7 @@ class BioController extends Controller
             'email' => $request['email'],
             'pre_address' => $request['pre_address'],
             'per_address' => $request['per_address'],
-            
+
             'f_name' => $request['f_name'],
             'f_nation' => $request['f_nation'],
             'f_cob' => $request['f_cob'],
@@ -213,8 +222,7 @@ class BioController extends Controller
         ->first();
 
         return view('backend.user.user-bio', ['siteData' =>  $siteData, 'user' => $user]);
-        
-    
+
     }
-    
+
 }

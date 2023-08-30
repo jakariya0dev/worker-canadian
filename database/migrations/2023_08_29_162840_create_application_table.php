@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('apply_here', function (Blueprint $table) {
+        Schema::create('application', function (Blueprint $table) {
             $table->id();
             $table->string('contact_number', 50);
             $table->string('email_address', 100);

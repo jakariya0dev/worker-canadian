@@ -23,12 +23,15 @@
                   <a class="nav-link" href="{{ route('site.data') }}">Site Data</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('bio.new') }}">Add profile</a>
+                  <a class="nav-link" href="{{ route('bio.new') }}">New profile</a>
                 </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ route('application.all') }}">Applications</a>
+                  </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('profile.edit') }}">Admin Profile</a>
                 </li>
-              
+
               </ul>
               <form class="d-flex" role="search" action="{{ route('bio.search') }}">
                 <input name="keyword" class="form-control me-2" type="search" placeholder="Phone or Email" aria-label="Search">

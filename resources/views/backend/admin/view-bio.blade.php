@@ -153,7 +153,7 @@
                     <th>Port Of Exit:</th>
                     <td colspan="2">{{ $user->poe }}</td>
                 </tr>
-    
+
                 <tr>
                     <th>Status:</th>
                     <td colspan="2">{{ $user->status }}</td>

@@ -13,16 +13,19 @@ return new class extends Migration
     {
         Schema::create('site_data', function (Blueprint $table) {
             $table->id();
-            $table->text('site_name');
+            $table->string('site_name', 100);
             $table->text('site_title');
             $table->text('sub_title');
-            $table->text('cell_number');
+            $table->string('cell_number', 50);
             $table->text('location');
-            $table->text('email');
+            $table->string('email', 100);
+            $table->text('short_desc');
             $table->text('twitter');
             $table->text('facebook');
             $table->text('instagram');
             $table->text('linkedin');
+            $table->text('bkash1');
+            $table->text('bkash2');
             $table->timestamps();
         });
     }
