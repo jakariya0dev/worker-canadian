@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 // Front end Route
 Route::get('/', [SiteDataController::class, 'getAllSiteData'])->name('home');
-Route::view('/tos', 'frontend.about')->name('tos');
-Route::view('/p-policy', 'frontend.about')->name('p.policy');
+//Route::view('/tos', 'frontend.about')->name('tos');
+Route::get('/privacy-policy', [SiteDataController::class, 'privacyPolicy'])->name('privacy.policy');
 
 
 // User Route
@@ -40,7 +40,8 @@ Route::middleware('auth')->group(function (){
     Route::put('/update-bio', [BioController::class, 'updateBio'])->name('bio.update');
 
     Route::get('/site-data', [SiteDataController::class, 'editSiteData'])->name('site.data');
-    Route::get('/update-site-data', [SiteDataController::class, 'updateSiteData'])->name('update.site.data');
+    Route::get('/update-site-data', [SiteDataController::class, 'teamDataForm'])->name('update.site.data');
+    Route::post('/update-team-data', [SiteDataController::class, 'updateTeamData'])->name('team.data.update');
 
 });
 

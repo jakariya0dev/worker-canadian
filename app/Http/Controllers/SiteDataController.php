@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class SiteDataController extends Controller
 {
-    
+
     function getAllSiteData(){
         $siteData = DB::table('site_data')->get()->first();
         return view('frontend.app', ['siteData' =>  $siteData]);
@@ -43,7 +43,7 @@ class SiteDataController extends Controller
             'facebook' => $request->facebook,
             'linkedin' => $request->linkedin,
         ]);
-        
+
         return redirect()->route('site.data');
         // dd($siteData);
     }
@@ -54,5 +54,19 @@ class SiteDataController extends Controller
         // dd($siteData);
     }
 
-    
+    function teamDataForm()
+    {
+        return view('backend.admin.team-data');
+    }
+
+    function updateTeamData()
+    {
+
+    }
+
+    function privacyPolicy()
+    {
+        $siteData = DB::table('site_data')->get()->first();
+        return view('frontend.layout.privacy-policy', ['siteData' =>  $siteData]);
+    }
 }

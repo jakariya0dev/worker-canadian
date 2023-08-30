@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('facebook');
             $table->text('instagram');
             $table->text('linkedin');
+            $table->text('payment_instruction');
             $table->text('bkash1');
             $table->text('bkash2');
             $table->timestamps();

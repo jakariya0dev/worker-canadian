@@ -16,7 +16,7 @@
               <li><a href="{{ route('home') }}" class="active">Home</a></li>
               <li><a href="{{ route('home') }}#service">Services</a></li>
               <li><a href="{{ route('home') }}#about">About</a></li>
-              <li><a href="{{ route('home') }}#team">Team</a></li>
+{{--              <li><a href="{{ route('home') }}#team">Team</a></li>--}}
               <li><a href="{{ route('home') }}#contact">Contact</a></li>
               <li><a href="{{ route('apply.here') }}">Apply Here</a></li>
               <li><a href="{{ route('user.bio.form') }}">User Profile</a></li>

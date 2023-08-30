@@ -25,6 +25,7 @@ class SiteDataSeeder extends Seeder
             'linkedin' => 'https://www.linkedin.com',
             'instagram' => 'https://www.instagram.com',
             'facebook' => 'https://www.facebook.com',
+            'payment_instruction' => 'আপনাকে অবশ্যই আগে $25 ডলার নিচের যেকোনো একটি নাম্বরে বিকাশ করতে হবে। তারপর ট্রান্সিশন আইডি এবং কোন নম্বর থেকে পাঠিয়েছেন। সেটি দিতে হবে',
             'bkash1' => '01762940480',
             'bkash2' => '01521466603',
         ]);

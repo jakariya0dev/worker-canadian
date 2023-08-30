@@ -209,7 +209,7 @@ class BioController extends Controller
     function findUserBio(Request $request){
 
         $validate = $request->validate([
-            'user-email' => 'required',
+            'user-pass-no' => 'required',
             'user-password' => 'required',
         ]);
 
@@ -217,7 +217,7 @@ class BioController extends Controller
         $siteData = DB::table('site_data')->get()->first();
 
         $user = DB::table('user_profile')
-        ->where('email', $request['user-email'])
+        ->where('pass_no', $request['user-pass-no'])
         ->Where('password', $request['user-password'])
         ->first();
 

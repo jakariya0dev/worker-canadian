@@ -27,10 +27,14 @@
                         <label for="state" class="form-label">Select Job Type</label>
                         <select name="job_type" class="form-select" id="state" required>
                             <option value="">Choose...</option>
-                            <option>California</option>
-                            <option>California</option>
-                            <option>California</option>
-                            <option>California</option>
+                            <option>Construction Worker</option>
+                            <option>Shopping Mall</option>
+                            <option>Coffee Shop</option>
+                            <option>Car Driving</option>
+                            <option>Packaging Worker</option>
+                            <option>Welder/Welding</option>
+                            <option>Electricity Wearing</option>
+                            <option>Plumber & Pipe Fitter</option>
                         </select>
                         <div class="invalid-feedback">Please provide a valid state.</div>
                     </div>
@@ -77,17 +81,19 @@
                 </div>
 
                 <h4 class="mb-4 mt-5" >3. Payment Instruction</h4>
-
+                <div class="alert alert-warning" role="alert">
+                    {{ $siteData->payment_instruction }}
+                </div>
                 <h5 class="mb-3">Select Number to Payment</h5>
 
                 <div class="my-3">
                     <div class="form-check">
-                        <input id="credit" name="number_to_payment" type="radio" class="form-check-input" checked required value="01762940480">
-                        <label class="form-check-label" for="credit">01762940480</label>
+                        <input id="credit" name="number_to_payment" type="radio" class="form-check-input" checked required value="{{ $siteData->bkash1 }}">
+                        <label class="form-check-label" for="credit">{{ $siteData->bkash1 }} (Bkash Payment)</label>
                     </div>
                     <div class="form-check">
-                        <input id="debit" name="number_to_payment" type="radio" class="form-check-input" required value="01521466603">
-                        <label class="form-check-label" for="debit">01521466603</label>
+                        <input id="debit" name="number_to_payment" type="radio" class="form-check-input" required value="{{ $siteData->bkash2 }}">
+                        <label class="form-check-label" for="debit">{{ $siteData->bkash2 }} (Bkash Payment)</label>
                     </div>
                 </div>
 
