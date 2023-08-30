@@ -3,6 +3,7 @@
 use App\Http\Controllers\addNewUserData;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BioController;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteDataController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,7 @@ Route::get('/view-application/{id}', [ApplicationController::class, 'viewApplica
 Route::get('/delete-application/{id}', [ApplicationController::class, 'deleteApplication'])->name('application.delete');
 Route::get('/view-application-image/{dir}/{name}', [ApplicationController::class, 'viewApplicationImage'])->name('application.image.view');
 Route::get('/download-application-image/{dir}/{name}', [ApplicationController::class, 'downloadApplicationImage'])->name('application.image.download');
+Route::get('/download-certificate/{pass_no}', [CertificateController::class, 'downloadCertificate'])->name('certificate.download');
 
 
 // Admin Route
@@ -41,7 +43,10 @@ Route::middleware('auth')->group(function (){
 
     Route::get('/site-data', [SiteDataController::class, 'editSiteData'])->name('site.data');
     Route::get('/update-site-data', [SiteDataController::class, 'teamDataForm'])->name('update.site.data');
-    Route::post('/update-team-data', [SiteDataController::class, 'updateTeamData'])->name('team.data.update');
+    Route::get('/certificate', [CertificateController::class, 'allCertificate'])->name('certificate.all');
+    Route::post('/certificate', [CertificateController::class, 'saveCertificate'])->name('certificate.save');
+    Route::get('/delete-certificate/{id}', [CertificateController::class, 'deleteCertificate'])->name('certificate.delete');
+    Route::get('/search-certificate', [CertificateController::class, 'searchCertificate'])->name('certificate.search');
 
 });
 

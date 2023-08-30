@@ -31,6 +31,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('profile.edit') }}">Admin Profile</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('certificate.all') }}">Certificate</a>
+                </li>
 
               </ul>
               <form class="d-flex" role="search" action="{{ route('bio.search') }}">

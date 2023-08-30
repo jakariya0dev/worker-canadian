@@ -29,7 +29,7 @@ class BioController extends Controller
             $request->file('pro_pic')->storeAs('public/images/pro_pic', $image);
         }
 
-        $arow = DB::table('user_profile')->insert([
+        $arow = DB::table('biodata')->insert([
             'sure_name' => $request['sure_name'],
             'name' => $request['name'],
             'o_name' => $request['o_name'],
@@ -87,13 +87,13 @@ class BioController extends Controller
     }
 
     function getAllBio(){
-        $users = DB::table('user_profile')->orderByDesc('id')->paginate(25);
+        $users = DB::table('biodata')->orderByDesc('id')->paginate(25);
         return view('backend.admin.all-bio', ['users' => $users]);
 
     }
 
     function getSingleBio($id){
-        $user = DB::table('user_profile')->find($id);
+        $user = DB::table('biodata')->find($id);
         return view('backend.admin.view-bio', ['user' => $user]);
 
     }
@@ -101,25 +101,25 @@ class BioController extends Controller
     function deleteBio($id){
 
         // deleting pro pic
-        $pro_pic = DB::table('user_profile')->where('id', $id)->value('pro_pic');
+        $pro_pic = DB::table('biodata')->where('id', $id)->value('pro_pic');
         $imagePath = storage_path('app/public/images/pro_pic/'.$pro_pic);
 
         if ($pro_pic != null && File::exists($imagePath)){
             unlink($imagePath);
         }
 
-        $status = DB::table('user_profile')->where('id', $id)->delete();
+        $status = DB::table('biodata')->where('id', $id)->delete();
         return redirect()->route('bio.all');
 
     }
 
     function editBio($id){
-        $user = DB::table('user_profile')->find($id);
+        $user = DB::table('biodata')->find($id);
         return view('backend.admin.edit-bio', ['user' => $user]);
     }
 
     function searchBio(Request $request){
-        $users = DB::table('user_profile')
+        $users = DB::table('biodata')
                     ->where('mobile', $request['keyword'])
                     ->orWhere('email', $request['keyword'])
                     ->paginate(25);
@@ -135,6 +135,7 @@ class BioController extends Controller
         ]);
 
         $image = $request->old_pro_pic;
+        $certificate = $request->$certificate;
 
         if($request->hasFile('pro_pic')){
 
@@ -150,7 +151,7 @@ class BioController extends Controller
 
         }
 
-        $arow = DB::table('user_profile')->where('id', $request['id'])->update([
+        $arow = DB::table('biodata')->where('id', $request['id'])->update([
             'sure_name' => $request['sure_name'],
             'name' => $request['name'],
             'o_name' => $request['o_name'],
@@ -216,12 +217,14 @@ class BioController extends Controller
 
         $siteData = DB::table('site_data')->get()->first();
 
-        $user = DB::table('user_profile')
+        $certificate = DB::table('certificate')->where('pass_no', '=', $request['user-pass-no'])->first();
+
+        $user = DB::table('biodata')
         ->where('pass_no', $request['user-pass-no'])
         ->Where('password', $request['user-password'])
         ->first();
 
-        return view('backend.user.user-bio', ['siteData' =>  $siteData, 'user' => $user]);
+        return view('backend.user.user-bio', ['siteData' =>  $siteData, 'user' => $user, 'certificate' => $certificate]);
 
     }
 

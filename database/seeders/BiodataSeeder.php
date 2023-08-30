@@ -7,15 +7,15 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class UserSeeder extends Seeder
+class BiodataSeeder extends Seeder
 {
 
     public function run(): void
     {
 
         for($i = 1; $i <=100; $i++){
-                    
-            DB::table('user_profile')->insert([
+
+            DB::table('biodata')->insert([
 
                 'sure_name' => fake()->firstName(),
                 'name' => fake()->name(),
@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
                 'email' => fake()->safeEmail(),
                 'pre_address' => fake()->address(),
                 'per_address' => fake()->address(),
-                
+
                 'f_name' => fake()->firstNameMale(),
                 'f_nation' => fake()->country(),
                 'f_cob' => fake()->country(),

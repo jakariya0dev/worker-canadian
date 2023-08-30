@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_profile', function(Blueprint $table){
+        Schema::create('biodata', function(Blueprint $table){
             $table->id();
 
             $table->string('sure_name', 100)->nullable();
@@ -44,7 +44,7 @@ return new class extends Migration
             $table->string('email', 100)->unique();
             $table->text('pre_address')->nullable();
             $table->text('per_address')->nullable();
-            
+
             $table->string('f_name', 100)->nullable();
             $table->string('f_nation', 100)->nullable();
             $table->string('f_cob', 100)->nullable();
@@ -64,7 +64,8 @@ return new class extends Migration
             $table->string('status', 100)->nullable();
             $table->string('pro_pic', 100)->nullable();
             $table->string('password', 100);
-            
+            $table->string('certificate', 100)->nullable();
+
             $table->timestamps();
         });
     }

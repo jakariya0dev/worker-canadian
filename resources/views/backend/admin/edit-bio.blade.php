@@ -68,45 +68,45 @@
                 <div class="col-md-4">
                     <label for="date-of-birth" class="form-label">Date of Birth</label>
                     <input  value="{{ $user->dob }}"name="dob" type="date" class="form-control" id="date-of-birth">
-                </div>  
+                </div>
                 <div class="col-md-4">
                     <label for="place-of-birth" class="form-label">Place of Birth Town/City</label>
                     <input value="{{ $user->pob }}" name="pob" type="text" class="form-control" id="place-of-birth">
-                </div> 
+                </div>
                 <div class="col-md-4">
                     <label for="country-of-birth" class="form-label">Country of Birth</label>
                     <input value="{{ $user->cob }}" name="cob" type="text" class="form-control" id="country-of-birth">
-                </div>  
+                </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-4">
                     <label for="nid-no" class="form-label">Citizenship /National ID No</label>
                     <input  value="{{ $user->nid }}" name="nid" type="text" class="form-control" id="nid-no">
-                </div>  
+                </div>
                 <div class="col-md-4">
                     <label for="education" class="form-label">Educational Qualification</label>
                     <input value="{{ $user->education }}" name="education" type="text" class="form-control" id="education">
-                </div> 
+                </div>
                 <div class="col-md-4">
                     <label for="visibility" class="form-label">Visible Identification marks</label>
                     <input  value="{{ $user->visibility }}" name="visibility" type="text" class="form-control" id="visibility">
-                </div>  
+                </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-4">
                     <label for="cn" class="form-label">Current Nationality</label>
                     <input value="{{ $user->c_nation }}" name="c_nation" type="text" class="form-control" id="cn">
-                </div>  
+                </div>
                 <div class="col-md-4">
                     <label for="nationality-type" class="form-label">Nationality Type</label>
                     <input value="{{ $user->n_type }}" name="n_type" type="text" class="form-control" id="nationality-type">
-                </div> 
+                </div>
                 <div class="col-md-4">
                     <label for="other-nationality" class="form-label">Any Other Previous/ Past Nationality</label>
                     <input value="{{ $user->o_nation }}" name="o_nation" type="text" class="form-control" id="other-nationality">
-                </div>  
+                </div>
             </div>
 
             {{-- B. Passport Details --}}
@@ -117,22 +117,22 @@
                 <div class="col-md-6">
                     <label for="passport-no" class="form-label">Passport No.</label>
                     <input  value="{{ $user->pass_no }}" name="pass_no" type="text" class="form-control" id="passport-no">
-                </div>  
+                </div>
                 <div class="col-md-6">
                     <label for="date-of-issue" class="form-label">Date of issue</label>
                     <input  value="{{ $user->pass_doi }}" name="pass_doi"  type="date" class="form-control" id="date-of-issue">
-                </div> 
+                </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="place-of-issue" class="form-label">Place of Issue</label>
                     <input value="{{ $user->pass_poi }}" name="pass_poi" type="text" class="form-control" id="place-of-issue">
-                </div>  
+                </div>
                 <div class="col-md-6">
                     <label for="date-of-expiry" class="form-label">Date of Expiry</label>
                     <input value="{{ $user->pass_doe }}" name="pass_doe" type="date" class="form-control" id="date-of-expiry">
-                </div> 
+                </div>
             </div>
 
             <p>Any other Passport/dentity Certificate held (if yes ,Please fill in the following)</p>
@@ -141,22 +141,22 @@
                 <div class="col-md-6">
                     <label for="passport-no" class="form-label">Passport No.</label>
                     <input value="{{ $user->op_no }}" name="op_no" type="text" class="form-control" id="passport-no">
-                </div>  
+                </div>
                 <div class="col-md-6">
                     <label for="date-of-issue" class="form-label">Date of issue</label>
                     <input  value="{{ $user->op_doi }}" name="op_doi" type="date" class="form-control" id="date-of-issue">
-                </div> 
+                </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="place-of-issue" class="form-label">Place of Issue</label>
                     <input value="{{ $user->op_poi }}" name="op_poi" type="text" class="form-control" id="place-of-issue">
-                </div>  
+                </div>
                 <div class="col-md-6">
                     <label for="date-of-expiry" class="form-label">Date of Expiry</label>
                     <input value="{{ $user->op_doe }}" name="op_doe" type="date" class="form-control" id="date-of-expiry">
-                </div> 
+                </div>
             </div>
 
             {{-- C. Applicant’s Contact Details --}}
@@ -189,7 +189,7 @@
             </div>
 
             {{-- D. Family Details --}}
-            
+
             <h5 class="mt-5 mb-3">D. Family Details</h5>
             <hr>
             <div class="row mb-3">
@@ -277,7 +277,13 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="status" class="form-label">Visa Status</label>
-                    <input value="{{ $user->status }}" name="status" type="text" class="form-control" id="status">
+                    <select name="status" class="form-select" id="status" required>
+                        <option value="">Choose...</option>
+                        <option>Pending</option>
+                        <option>Success</option>
+                        <option>Overrode</option>
+                    </select>
+{{--                    <input value="{{ $user->status }}" name="status" type="text" class="form-control" id="status">--}}
                 </div>
                 <div class="col-md-6">
                     <label for="password" class="form-label">Password</label>
